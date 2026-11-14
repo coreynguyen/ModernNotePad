@@ -211,14 +211,14 @@ void Burst(float x, float y, Color c, int n, float speed, const wchar_t* chars) 
 void SpawnWave() {
     ++s_wave;
     s_en.clear();
-    static const wchar_t* small[] = { L"{", L"}", L";", L"#", L"@", L"&", L"%", L"$", L"*", L"<", L">", L"\\", L"~", L"^" };
+    static const wchar_t* glyphs[] = { L"{", L"}", L";", L"#", L"@", L"&", L"%", L"$", L"*", L"<", L">", L"\\", L"~", L"^" };
     static const wchar_t* words[] = { L"NULL", L"0xDEAD", L"BUG", L"NaN", L"TODO", L"ÿUTF", L"\\r\\n", L"undef" };
     bool boss = s_wave % 5 == 0;
     if (boss) {
         Enemy e; e.g = s_wave == 5 ? L"SEGFAULT" : (s_wave == 10 ? L"STACK OVERFLOW" : L"BLUE SCREEN");
         e.x = W / 2; e.y = -30; e.homeX = W / 2; e.homeY = 70; e.hp = e.maxHp = 30 + s_wave * 4; e.kind = 2; e.fireCd = 1.5f;
         s_en.push_back(e);
-        for (int i = 0; i < 4; ++i) { Enemy m; m.g = small[i]; m.homeX = W * (0.2f + 0.2f * i); m.homeY = 130; m.x = m.homeX; m.y = -60 - i * 20; m.kind = 0; s_en.push_back(m); }
+        for (int i = 0; i < 4; ++i) { Enemy m; m.g = glyphs[i]; m.homeX = W * (0.2f + 0.2f * i); m.homeY = 130; m.x = m.homeX; m.y = -60 - i * 20; m.kind = 0; s_en.push_back(m); }
         return;
     }
     int cols = std::max(5, std::min(8, (int)(W / 40))), rows = std::min(5, 2 + s_wave / 2);
@@ -226,7 +226,7 @@ void SpawnWave() {
         for (int c = 0; c < cols; ++c) {
             Enemy e;
             bool word = r == 0 && s_wave >= 2 && c % 3 == 1;
-            e.g = word ? words[(int)(Rnd() * 8) % 8] : small[(int)(Rnd() * 14) % 14];
+            e.g = word ? words[(int)(Rnd() * 8) % 8] : glyphs[(int)(Rnd() * 14) % 14];
             e.kind = word ? 1 : 0; e.hp = e.maxHp = word ? 3 + s_wave / 3 : 1;
             e.homeX = W * (c + 0.5f) / cols; e.homeY = 50 + r * 34;
             e.x = e.homeX + (Rnd() - 0.5f) * 80; e.y = -40 - r * 30 - Rnd() * 40;
