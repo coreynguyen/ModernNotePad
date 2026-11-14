@@ -1093,7 +1093,7 @@ void RunCommand(int cmd) {
             OpenPath(d->path, false, cmd - C_REOPEN0);
         return;
     }
-    if (cmd >= C_LANG0 && cmd < C_LANG0 + np::L_COUNT) {
+    if (cmd >= C_LANG0 && cmd < C_LANG0 + (int)np::L_COUNT) {
         if (d) { d->lang = (np::Lang)(cmd - C_LANG0); d->langAuto = false; d->lex.Reset(); d->foldsVer = UINT64_MAX; EditorClearCache(); Invalidate(); }
         return;
     }
