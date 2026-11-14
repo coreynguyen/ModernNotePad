@@ -1,0 +1,54 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to attach the exe to a release on tag pushes
+
+jobs:
+  core-tests-linux:
+    name: Core tests (Linux, g++)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and run portable core tests
+        run: |
+          g++ -std=c++17 -O2 -Wall -Isrc tests/core_tests.cpp src/core/*.cpp -o core_tests
+          ./core_tests
+
+  windows:
+    name: Windows (MSVC, ${{ matrix.platform }})
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ x64, ARM64 ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: microsoft/setup-msbuild@v2
+      # The project targets the VS 2026 toolset (v145); hosted runners ship VS 2022, so build with v143.
+      - name: Build
+        run: msbuild ModernNotepad.sln /m /p:Configuration=Release /p:Platform=${{ matrix.platform }} /p:PlatformToolset=v143
+      - name: Run core tests
+        if: matrix.platform == 'x64'
+        run: .\bin\x64\Release\CoreTests.exe
+      - name: Upload exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: ModernNotepad-${{ matrix.platform }}
+          path: bin/${{ matrix.platform }}/Release/ModernNotepad.exe
+      - name: Rename for release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: Copy-Item bin/${{ matrix.platform }}/Release/ModernNotepad.exe ModernNotepad-${{ matrix.platform }}.exe
+      - name: Attach to GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ModernNotepad-${{ matrix.platform }}.exe
+          generate_release_notes: true

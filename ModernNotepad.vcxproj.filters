@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files\core"><UniqueIdentifier>{d0bb05e9-f97b-4cc5-8303-42ec14e3a162}</UniqueIdentifier></Filter>
+    <Filter Include="Source Files\mxs"><UniqueIdentifier>{7d3c1a52-5b1e-4f6a-9a3e-6f0d2c8b1e47}</UniqueIdentifier></Filter>
+    <Filter Include="Source Files\app"><UniqueIdentifier>{0c9e75d9-7e63-4f8b-ae82-92150c86ddfa}</UniqueIdentifier></Filter>
+    <Filter Include="Resources"><UniqueIdentifier>{eaca7a06-0b91-43b8-a357-5bd88a9d90a3}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\core\text_doc.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\core\syntax.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\core\search.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\core\markdown.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\core\markup.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\app\flyout.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\core\csv.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\app\gridview.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\core\mdlive.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="src\app\livefmt.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\game.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\evaluate.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\uia.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\core\regex.cpp"><Filter>Source Files\core</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\builtins_core.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\builtins_ext.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\builtins_file.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\builtins_lang2.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\eval.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\parse.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\scripted.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\stackguard.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="third_party\mxs\src\values2.cpp"><Filter>Source Files\mxs</Filter></ClCompile>
+    <ClCompile Include="src\app\msgbox.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\main.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\gfx.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\editor.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\hexview.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\mdview.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\spell.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\ai.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClCompile Include="src\app\session.cpp"><Filter>Source Files\app</Filter></ClCompile>
+    <ClInclude Include="src\core\text_doc.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\syntax.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\search.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\markdown.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\markup.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\csv.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\mdlive.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\core\regex.h"><Filter>Source Files\core</Filter></ClInclude>
+    <ClInclude Include="src\app\app.h"><Filter>Source Files\app</Filter></ClInclude>
+    <ClInclude Include="res\resource.h"><Filter>Resources</Filter></ClInclude>
+    <ResourceCompile Include="res\app.rc"><Filter>Resources</Filter></ResourceCompile>
+    <None Include="res\app.manifest"><Filter>Resources</Filter></None>
+    <Image Include="res\app.ico"><Filter>Resources</Filter></Image>
+  </ItemGroup>
+</Project>
