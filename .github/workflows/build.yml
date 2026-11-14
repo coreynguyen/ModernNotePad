@@ -36,7 +36,7 @@ jobs:
         shell: pwsh
         run: |
           $vs = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
-          $ts = Get-ChildItem "$vs\MSBuild\Microsoft\VC\*\Platforms\${{ matrix.platform }}\PlatformToolsets" -Directory -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name
+          $ts = Get-ChildItem "$vs\MSBuild\Microsoft\VC\*\Platforms\${{ matrix.platform }}\PlatformToolsets\*" -Directory -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name
           Write-Host "Toolsets for ${{ matrix.platform }}: $($ts -join ', ')"
           $pick = @('v145','v143') | Where-Object { $ts -contains $_ } | Select-Object -First 1
           if (-not $pick) { throw "No v145/v143 toolset for ${{ matrix.platform }}" }
